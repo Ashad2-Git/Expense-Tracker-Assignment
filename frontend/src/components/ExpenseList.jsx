@@ -4,13 +4,15 @@ export default function ExpenseList({ expenses, deleteExpense }) {
     return(
         <>
             <section>
-                {expenses.map((expense) => {
+                <div>
+                {expenses.map((expense) => (
                     <ExpenseItem 
                         key={expense.id}
                         expense={expense}
                         deleteExpense={deleteExpense}
                     />
-                })}
+                ))}
+                </div>
             </section>
         </>
     )

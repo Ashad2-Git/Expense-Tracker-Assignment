@@ -8,7 +8,7 @@ export default function ExpenseForm({ addExpense }) {
     const [category, setCategory] = useState("Food");
 
     const handleSubmit = (e) => {
-        e.preventDefalut();
+        e.preventDefault();
 
         const newExpense = {
             id: Date.now(),
