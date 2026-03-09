@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export default function ExpenseForm({ addexpense }) {
+export default function ExpenseForm({ addExpense }) {
 
     const [name, setName] = useState("");
     const [amount, setAmount] = useState("");
@@ -10,7 +10,17 @@ export default function ExpenseForm({ addexpense }) {
     const handleSubmit = (e) => {
         e.preventDefalut();
 
-        
+        const newExpense = {
+            id: Date.now(),
+            name,
+            amount: Number(amount),
+            category
+        };
+
+        addExpense(newExpense);
+
+        setName("");
+        setAmount("");
     }
 
     return (
@@ -23,6 +33,7 @@ export default function ExpenseForm({ addexpense }) {
                         onChange={(e) => setName(e.target.value)}
                         required
                         className="border border-black"></input>
+
                     <input 
                         placeholder="Amount"
                         value={amount}
@@ -30,6 +41,7 @@ export default function ExpenseForm({ addexpense }) {
                         onChange={(e) => setAmount(e.target.value)}
                         required
                         className="border border-black"></input>
+
                     <select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
