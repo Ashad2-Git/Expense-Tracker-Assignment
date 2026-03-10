@@ -11,7 +11,7 @@ export default function CurrencyConverter({ total }) {
     useEffect(() => {
         fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`)
         .then(res => res.json())
-        .then(data => {
+        .then(data => {            
             if(data.conversion_rates) {
                 setRate(data.conversion_rates[currency])
             }
