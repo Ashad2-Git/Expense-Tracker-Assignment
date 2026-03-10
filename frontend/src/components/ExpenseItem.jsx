@@ -1,6 +1,6 @@
 
 
-export default function ExpenseItem({ expense, deleteExpense}) {
+export default function ExpenseItem({ expense, setEditingExpense, deleteExpense}) {
     return (
         <>
             <section>
@@ -10,6 +10,10 @@ export default function ExpenseItem({ expense, deleteExpense}) {
                     <p>{expense.category}</p>
 
                     <p>${expense.amount}</p>
+
+                    <button onClick={() => setEditingExpense(expense)}>
+                        Edit
+                    </button>
 
                     <button onClick={() => deleteExpense(expense.id)}>
                         Delete

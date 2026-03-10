@@ -1,27 +1,41 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
-export default function ExpenseForm({ addExpense }) {
+export default function ExpenseForm({ addExpense, editingExpense, updateExpense }) {
 
     const [name, setName] = useState("");
     const [amount, setAmount] = useState("");
     const [category, setCategory] = useState("Food");
 
+    useEffect(() => {
+        if (editingExpense) {
+            setName(editingExpense.name)
+            setAmount(editingExpense.amount)
+            setCategory(editingExpense.category)
+        }
+    }, [editingExpense])
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const newExpense = {
-            id: Date.now(),
+            id: editingExpense ? editingExpense.id : Date.now(),
             name,
             amount: Number(amount),
             category
         };
 
-        addExpense(newExpense);
+        if(editingExpense){
+            updateExpense(newExpense)
+        } else {
+            addExpense(newExpense)
+        }
 
         setName("");
         setAmount("");
     }
+
+
 
     return (
         <>

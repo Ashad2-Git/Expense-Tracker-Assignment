@@ -13,6 +13,8 @@ function App() {
       return savedExpenses ? JSON.parse(savedExpenses) : [];
     });
 
+    const [editingExpense, setEditingExpense] = useState(null)
+
     useEffect(() => {
       localStorage.setItem("expenses", JSON.stringify(expenses));
     }, [expenses])
@@ -20,6 +22,15 @@ function App() {
     const addExpense = (expense) => {
       setExpenses([...expenses, expense])
     };
+
+    const updateExpense = (updatedExpense) => {
+        setExpenses(
+          expenses.map((expense) => 
+            expense.id === unpdatedExpense.id ? updatedExpense : expense
+          )
+        )
+        setEditExpense(null);
+    }
 
     const deleteExpense = (id) => {
       setExpenses(expenses.filter((item) => item.id !== id))
@@ -33,8 +44,11 @@ function App() {
   return (
     <>
       <h1>Expense Tracker</h1>
-      <ExpenseForm  addExpense={addExpense}/>
-      <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
+      <ExpenseForm  addExpense={addExpense}
+          editingExpense={editingExpense}
+          updateExpense={updateExpense}/>
+      <ExpenseList expenses={expenses} 
+          deleteExpense={deleteExpense} />
       <SummaryPanel expenses={expenses} />
       <CurrencyConverter total={total} />
     </>
