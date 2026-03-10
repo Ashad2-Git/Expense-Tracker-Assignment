@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ExpenseForm from './components/ExpenseForm'
 import ExpenseList from './components/ExpenseList';
 import SummaryPanel from './components/SummaryPanel';
@@ -8,7 +8,14 @@ import CurrencyConverter from './components/CurrencyConverter';
 
 function App() {
 
-    const [expenses, setExpenses] = useState([]);
+    const [expenses, setExpenses] = useState(() => {
+      const savedExpenses = localStorage.getItem("expenses");
+      return savedExpenses ? JSON.parse(savedExpenses) : [];
+    });
+
+    useEffect(() => {
+      localStorage.setItem("expenses", JSON.stringify(expenses));
+    }, [expenses])
 
     const addExpense = (expense) => {
       setExpenses([...expenses, expense])

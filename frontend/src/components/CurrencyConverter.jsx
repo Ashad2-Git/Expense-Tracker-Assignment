@@ -6,14 +6,18 @@ export default function CurrencyConverter({ total }) {
     const [currency, setCurrency] = useState("USD");
     const [rate, setRate] = useState(null);
 
+    const apiKey = import.meta.env.VITE_API_key;
+
     useEffect(() => {
-        fetch(`https://api.frankfurter.app/latest?from=INR`)
-        .then(res => res.json)
+        fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`)
+        .then(res => res.json())
         .then(data => {
-            setRate(data.rates[currency])
+            if(data.conversion_rates) {
+                setRate(data.conversion_rates[currency])
+            }
         })
         .catch((error) => console.error("Error fetching data:", error))
-    }, [currency])
+    }, [currency, apiKey])
 
     return (
         <>
@@ -25,6 +29,7 @@ export default function CurrencyConverter({ total }) {
                     <option>USD</option>
                     <option>EUR</option>
                     <option>GBP</option>
+                    <option>INR</option>
                 </select>
 
                     {rate && (

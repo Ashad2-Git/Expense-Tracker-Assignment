@@ -9,7 +9,7 @@ export default function ExpenseItem({ expense, deleteExpense}) {
 
                     <p>{expense.category}</p>
 
-                    <p>₹{expense.amount}</p>
+                    <p>${expense.amount}</p>
 
                     <button onClick={() => deleteExpense(expense.id)}>
                         Delete

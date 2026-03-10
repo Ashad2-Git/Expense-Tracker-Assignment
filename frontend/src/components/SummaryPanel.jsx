@@ -16,13 +16,13 @@ export default function SummaryPanel({ expenses }) {
     return(
         <>
             <div>
-                <h2>Total: ₹{total}</h2>
+                <h2>Total: ${total}</h2>
 
                 <h3>Category Breakdown</h3>
 
                 {Object.entries(categories).map(([cat, value]) => (
                     <p key={cat}>
-                        {cat}: ₹{value}
+                        {cat}: ${value}
                     </p>
                 ))}
             </div>

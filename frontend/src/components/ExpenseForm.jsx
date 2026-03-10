@@ -37,7 +37,8 @@ export default function ExpenseForm({ addExpense }) {
                     <input 
                         placeholder="Amount"
                         value={amount}
-                        type="Number"
+                        type="number"
+                        step={0.01}
                         onChange={(e) => setAmount(e.target.value)}
                         required
                         className="border border-black"></input>
