@@ -43,17 +43,15 @@ function App() {
 
   return (
     <>
-        <div className="max-w-7xl mx-auto p-6 min-h-screen bg-gray-50">
-          <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
+        <div className=" w-full mx-auto p-6 min-h-screen bg-gray-900">
+          <h1 className="text-3xl font-bold mb-4 text-center text-gray-400">
             Expense Tracker
           </h1>
 
-          {/* The 12-Column Grid Container */}
           <main className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            
-            {/* 1. LEFT SIDE: The Form (Takes 3/12 columns) */}
-            <section className="md:col-span-3">
-              <div className="sticky top-6">
+
+            <section className="md:col-span-3 flex flex-col gap-6 bg-gray-700 p-2 rounded-xl h-fit">
+              <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                 <h2 className="text-lg font-semibold mb-4 text-gray-600">Entry</h2>
                 <ExpenseForm 
                   addExpense={addExpense}
@@ -61,11 +59,15 @@ function App() {
                   updateExpense={updateExpense}
                 />
               </div>
+
+              <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                <h2 className="text-lg font-semibold mb-4 text-gray-600"> Currency Converter</h2>
+                <CurrencyConverter total={total} />
+              </div>
             </section>
 
-            {/* 2. MIDDLE: The History (Takes 6/12 columns) */}
-            <section className="md:col-span-6 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-              <h2 className="text-lg font-semibold mb-4 text-gray-600">Expense List</h2>
+            <section className="md:col-span-6 bg-gray-700 p-4 rounded-xl shadow-sm border border-gray-100">
+              <h2 className="text-lg font-semibold mb-4 text-gray-300">Expense List</h2>
               <ExpenseList 
                 expenses={expenses} 
                 deleteExpense={deleteExpense} 
@@ -73,16 +75,10 @@ function App() {
               />
             </section>
 
-            {/* 3. RIGHT SIDE: The Analytics (Takes 3/12 columns) */}
-            <section className="md:col-span-3 flex flex-col gap-6">
+            <section className="md:col-span-3 flex flex-col gap-6 bg-gray-700 p-2 rounded-xl h-fit">
               <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                 <h2 className="text-lg font-semibold mb-4 text-gray-600">Summary</h2>
                 <SummaryPanel expenses={expenses} />
-              </div>
-              
-              <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                <h2 className="text-lg font-semibold mb-4 text-gray-600">Converter</h2>
-                <CurrencyConverter total={total} />
               </div>
             </section>
           </main>
