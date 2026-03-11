@@ -26,10 +26,10 @@ function App() {
     const updateExpense = (updatedExpense) => {
         setExpenses(
           expenses.map((expense) => 
-            expense.id === unpdatedExpense.id ? updatedExpense : expense
+            expense.id === updatedExpense.id ? updatedExpense : expense
           )
         )
-        setEditExpense(null);
+        setEditingExpense(null);
     }
 
     const deleteExpense = (id) => {
@@ -48,7 +48,8 @@ function App() {
           editingExpense={editingExpense}
           updateExpense={updateExpense}/>
       <ExpenseList expenses={expenses} 
-          deleteExpense={deleteExpense} />
+          deleteExpense={deleteExpense} 
+          setEditingExpense={setEditingExpense}/>
       <SummaryPanel expenses={expenses} />
       <CurrencyConverter total={total} />
     </>

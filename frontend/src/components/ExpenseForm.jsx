@@ -40,7 +40,11 @@ export default function ExpenseForm({ addExpense, editingExpense, updateExpense 
     return (
         <>
             <section>
+            
                 <form onSubmit={handleSubmit}>
+
+                {editingExpense && <p>Editing: {editingExpense.name}</p>}    
+
                     <input 
                         placeholder="Expense Name"
                         value={name}
@@ -67,8 +71,8 @@ export default function ExpenseForm({ addExpense, editingExpense, updateExpense 
                         <option>Utilities</option>
                         <option>Others</option>
                     </select>
-
-                    <button>Add Expense</button>
+                    
+                    <button>{editingExpense ? "Update Expense" : "Add Expense"}</button>
 
                 </form>
             </section>

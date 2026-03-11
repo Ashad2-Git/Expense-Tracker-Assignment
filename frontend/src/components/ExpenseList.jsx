@@ -1,6 +1,6 @@
 import ExpenseItem from "./ExpenseItem";
 
-export default function ExpenseList({ expenses, deleteExpense }) {
+export default function ExpenseList({ expenses, setEditingExpense, deleteExpense }) {
     return(
         <>
             <section>
@@ -10,6 +10,7 @@ export default function ExpenseList({ expenses, deleteExpense }) {
                         key={expense.id}
                         expense={expense}
                         deleteExpense={deleteExpense}
+                        setEditingExpense={setEditingExpense}
                     />
                 ))}
                 </div>
