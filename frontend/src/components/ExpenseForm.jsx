@@ -12,7 +12,11 @@ export default function ExpenseForm({ addExpense, editingExpense, updateExpense 
             setName(editingExpense.name)
             setAmount(editingExpense.amount)
             setCategory(editingExpense.category)
-        } 
+        } else {
+            setName("");
+            setAmount("");
+            setCategory("Food");
+        }
     }, [editingExpense])
 
     const handleSubmit = (e) => {

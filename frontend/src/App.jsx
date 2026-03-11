@@ -75,7 +75,7 @@ function App() {
               />
             </section>
 
-            <section className="md:col-span-3 flex flex-col gap-6 bg-gray-700 p-2 rounded-xl h-fit">
+            <section className="md:col-span-3 gap-6 bg-gray-700 p-2 rounded-xl h-fit">
               <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                 <h2 className="text-lg font-semibold mb-4 text-gray-600">Summary</h2>
                 <SummaryPanel expenses={expenses} />
