@@ -65,7 +65,7 @@ function App() {
 
             {/* 2. MIDDLE: The History (Takes 6/12 columns) */}
             <section className="md:col-span-6 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-              <h2 className="text-lg font-semibold mb-4 text-gray-600">History</h2>
+              <h2 className="text-lg font-semibold mb-4 text-gray-600">Expense List</h2>
               <ExpenseList 
                 expenses={expenses} 
                 deleteExpense={deleteExpense} 

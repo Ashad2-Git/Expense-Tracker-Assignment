@@ -39,44 +39,59 @@ export default function ExpenseForm({ addExpense, editingExpense, updateExpense 
 
     return (
         <>
-            <section className="bg-gray-50 p-4 rounded-lg shadow-sm">
-                
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <div className=" max-w-2xl w-full flex flex-col">
-                {editingExpense && <p>Editing: {editingExpense.name}</p>}    
+           <section className="bg-gray-50 p-4 rounded-lg shadow-sm">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        {editingExpense && (
+            <p className="text-blue-600 text-sm font-bold">
+                Editing: {editingExpense.name}
+            </p>
+        )}
 
-                    <input 
-                        placeholder="Expense Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        className="border border-black rounded"></input>
+        <div className="flex flex-col gap-1">
+            <label className="text-xs font-bold uppercase text-gray-500">Name</label>
+            <input 
+                placeholder="e.g. Netflix"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="border p-2 rounded focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+        </div>
 
-                    <input 
-                        placeholder="Amount"
-                        value={amount}
-                        type="number"
-                        step={0.01}
-                        onChange={(e) => setAmount(e.target.value)}
-                        required
-                        className="border border-black"></input>
+        <div className="flex flex-col gap-1">
+            <label className="text-xs font-bold uppercase text-gray-500">Amount</label>
+            <input 
+                placeholder="0.00"
+                value={amount}
+                type="number"
+                step="0.01"
+                min="0.01"
+                onChange={(e) => setAmount(e.target.value)}
+                required
+                className="border p-2 rounded"
+            />
+        </div>
 
-                    <select
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                    >
-                        <option>Food</option>
-                        <option>Travel</option>
-                        <option>Marketing</option>
-                        <option>Utilities</option>
-                        <option>Others</option>
-                    </select>
-                    
-                    <button>{editingExpense ? "Update Expense" : "Add Expense"}</button>
-                    </div>
-                </form>
-                
-            </section>
+        <div className="flex flex-col gap-1">
+            <label className="text-xs font-bold uppercase text-gray-500">Category</label>
+            <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="border p-2 rounded bg-white"
+            >
+                <option>Food</option>
+                <option>Travel</option>
+                <option>Marketing</option>
+                <option>Utilities</option>
+                <option>Others</option>
+            </select>
+        </div>
+
+        <button className="bg-black text-white p-2 rounded hover:bg-gray-800 transition-colors">
+            {editingExpense ? "Update Expense" : "Add Expense"}
+        </button>
+    </form>
+</section>
         </>
     )
 }
