@@ -39,10 +39,10 @@ export default function ExpenseForm({ addExpense, editingExpense, updateExpense 
 
     return (
         <>
-            <section>
-            
-                <form onSubmit={handleSubmit}>
-
+            <section className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <div className=" max-w-2xl w-full flex flex-col">
                 {editingExpense && <p>Editing: {editingExpense.name}</p>}    
 
                     <input 
@@ -50,7 +50,7 @@ export default function ExpenseForm({ addExpense, editingExpense, updateExpense 
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        className="border border-black"></input>
+                        className="border border-black rounded"></input>
 
                     <input 
                         placeholder="Amount"
@@ -73,8 +73,9 @@ export default function ExpenseForm({ addExpense, editingExpense, updateExpense 
                     </select>
                     
                     <button>{editingExpense ? "Update Expense" : "Add Expense"}</button>
-
+                    </div>
                 </form>
+                
             </section>
         </>
     )
